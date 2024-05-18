@@ -31,6 +31,7 @@ public:
     void erase(BST_Tree<T> *&root, const T val);
 
     void printInOrder(BST_Tree<T> *root);
+    void printPostOrder(BST_Tree<T> *root);
     void printLevelOrder(BST_Tree<T> *root);
 };
 
@@ -63,6 +64,15 @@ void BST_Tree<T>::printInOrder(BST_Tree<T> *root) {
     printInOrder(root->left);
     std::cout << root->data << std::endl;
     printInOrder(root->right);
+}
+
+template<class T>
+void BST_Tree<T>::printPostOrder(BST_Tree<T> *root) {
+    if (root == nullptr)
+        return;
+    printPostOrder(root->right);
+    std::cout << root->data << std::endl;
+    printPostOrder(root->left);
 }
 
 template<class T>

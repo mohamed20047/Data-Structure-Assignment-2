@@ -35,6 +35,7 @@ public:
     void erase(AVLTree<T> *&root, const T val);
 
     void printInOrder(AVLTree<T> *root);
+    void printPostOrder(AVLTree<T> *root);
     void printLevelOrder(AVLTree<T> *root);
 };
 
@@ -69,6 +70,15 @@ void AVLTree<T>::printInOrder(AVLTree<T> *root) {
     printInOrder(root->left);
     std::cout << root->data << std::endl;
     printInOrder(root->right);
+}
+
+template<class T>
+void AVLTree<T>::printPostOrder(AVLTree<T> *root) {
+    if (root == nullptr)
+        return;
+    printPostOrder(root->right);
+    std::cout << root->data << std::endl;
+    printPostOrder(root->left);
 }
 
 template<class T>
